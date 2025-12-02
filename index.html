@@ -3,10 +3,295 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome to Wizaard's Page</title>
+    <title>Zafir | Mission Control</title>
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300;600&family=Orbitron:wght@500;900&display=swap" rel="stylesheet">
+    <style>
+        /* --- COSMOS THEME VARIABLES --- */
+        :root {
+            --space-bg-1: #090a0f;
+            --space-bg-2: #1b2735;
+            --starlight: #ffffff;
+            --nebula-glow: #4e65ff; /* Bright Blue */
+            --planet-surface: rgba(255, 255, 255, 0.05);
+            --hud-border: rgba(78, 101, 255, 0.3);
+        }
+
+        /* --- GLOBAL STYLES --- */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Exo 2', sans-serif;
+            background: radial-gradient(ellipse at bottom, var(--space-bg-2) 0%, var(--space-bg-1) 100%);
+            color: var(--starlight);
+            min-height: 100vh;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* --- ANIMATED STARS BACKGROUND (CSS TRICK) --- */
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            background-image: 
+                radial-gradient(2px 2px at 20px 30px, #eee, rgba(0,0,0,0)),
+                radial-gradient(2px 2px at 40px 70px, #fff, rgba(0,0,0,0)),
+                radial-gradient(2px 2px at 50px 160px, #ddd, rgba(0,0,0,0)),
+                radial-gradient(2px 2px at 90px 40px, #fff, rgba(0,0,0,0)),
+                radial-gradient(2px 2px at 130px 80px, #fff, rgba(0,0,0,0));
+            background-repeat: repeat;
+            background-size: 200px 200px;
+            opacity: 0.5;
+            z-index: -1;
+            animation: twinkle 5s infinite linear;
+        }
+
+        @keyframes twinkle {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-200px); }
+        }
+
+        /* --- LAYOUT --- */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        header {
+            text-align: center;
+            padding: 80px 0;
+            position: relative;
+        }
+
+        h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 4rem;
+            margin: 0;
+            background: linear-gradient(to right, #fff, var(--nebula-glow));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 20px rgba(78, 101, 255, 0.5);
+        }
+
+        .mission-tag {
+            display: inline-block;
+            background: rgba(78, 101, 255, 0.1);
+            border: 1px solid var(--nebula-glow);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            margin-top: 15px;
+            text-transform: uppercase;
+        }
+
+        /* --- HUD PANELS (SECTIONS) --- */
+        .panel {
+            background: var(--planet-surface);
+            border: 1px solid var(--hud-border);
+            backdrop-filter: blur(10px);
+            border-radius: 10px;
+            padding: 30px;
+            margin-bottom: 40px;
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .panel::before {
+            /* Top decorative bar */
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--nebula-glow), transparent);
+        }
+
+        h2 {
+            font-family: 'Orbitron', sans-serif;
+            color: var(--nebula-glow);
+            margin-top: 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 10px;
+            font-size: 1.5rem;
+            letter-spacing: 1px;
+        }
+
+        /* --- TIMELINE (FLIGHT LOG) --- */
+        .log-entry {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 25px;
+        }
+
+        .log-time {
+            min-width: 100px;
+            font-family: 'Orbitron', sans-serif;
+            color: #8da1ff;
+            font-size: 0.9rem;
+            text-align: right;
+            padding-top: 4px;
+        }
+
+        .log-content {
+            border-left: 2px solid var(--nebula-glow);
+            padding-left: 20px;
+        }
+
+        .log-content h3 {
+            margin: 0 0 5px 0;
+            font-size: 1.2rem;
+        }
+
+        .log-content p {
+            margin: 0 0 10px 0;
+            color: #b0c4de;
+            font-style: italic;
+        }
+
+        /* --- SKILLS (CONSTELLATIONS) --- */
+        .constellation {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .star-node {
+            background: rgba(255, 255, 255, 0.08);
+            padding: 10px 20px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            border: 1px solid transparent;
+        }
+
+        .star-node:hover {
+            background: rgba(78, 101, 255, 0.2);
+            border-color: var(--nebula-glow);
+            box-shadow: 0 0 15px var(--nebula-glow);
+            cursor: default;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            text-align: center;
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.4);
+            padding-bottom: 40px;
+        }
+
+        a {
+            color: var(--nebula-glow);
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        a:hover {
+            color: #fff;
+            text-shadow: 0 0 10px #fff;
+        }
+    </style>
 </head>
 <body>
-    <h1>Hello, welcome to Wizaard's GitHub Page!</h1>
-    <p>This is a simple web page hosted on GitHub Pages.</p>
+
+    <div class="stars"></div>
+
+    <div class="container">
+        
+        <header>
+            <div class="mission-tag">System Online</div>
+            <h1>Zafir</h1>
+            <p style="color: #a4b0be; font-size: 1.2rem; margin-top: 10px;">
+                Pilot: Civil Service &rarr; Destination: Robotics & AI
+            </p>
+        </header>
+
+        <!-- BIO SECTION -->
+        <div class="panel">
+            <h2>Mission Trajectory</h2>
+            <p>
+                <strong>Captain's Log:</strong> I am an Electronics Engineer who spent a decade navigating the complex systems of Public Administration in Kerala. 
+            </p>
+            <p>
+                But my compass has always pointed toward technology. I am now initiating a course correction—pivoting back to <strong>Robotics and Autonomous Systems</strong>. My next objective is the MBZUAI Graduate Program, where I plan to build the infrastructure of tomorrow.
+            </p>
+        </div>
+
+        <!-- EXPERIENCE SECTION -->
+        <div class="panel">
+            <h2>Flight History</h2>
+            
+            <div class="log-entry">
+                <div class="log-time">2014 - Now</div>
+                <div class="log-content">
+                    <h3>Civil Service Officer</h3>
+                    <p>Government of Kerala</p>
+                    <span>Managing public sector projects and navigating bureaucratic architecture. Volunteer coach at Civil Service Academies.</span>
+                </div>
+            </div>
+
+            <div class="log-entry">
+                <div class="log-time">Pre-2014</div>
+                <div class="log-content">
+                    <h3>Founder, Biotz</h3>
+                    <p>Startup Command Module</p>
+                    <span>Launched a hardware startup. Led crew in circuit design, prototyping, and product development before the pivot to service.</span>
+                </div>
+            </div>
+
+            <div class="log-entry">
+                <div class="log-time">2013</div>
+                <div class="log-content">
+                    <h3>Robotics Coach</h3>
+                    <p>Nuvu Studio (American School of Bombay)</p>
+                    <span>Trained cadets in the "Robotics 1-2-3" program. Overseeing soldering, coding, and 3D fabrication operations.</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- SKILLS SECTION -->
+        <div class="panel">
+            <h2>Tools & Tech</h2>
+            <div class="constellation">
+                <div class="star-node">Embedded Systems</div>
+                <div class="star-node">Robotics</div>
+                <div class="star-node">Artificial Intelligence</div>
+                <div class="star-node">Leadership</div>
+                <div class="star-node">Prototyping</div>
+                <div class="star-node">Public Policy</div>
+            </div>
+        </div>
+
+        <!-- ORIGINS SECTION -->
+        <div class="panel">
+            <h2>Launch Pad (Education)</h2>
+            <p><strong>Base of Operations:</strong> Abu Dhabi, UAE (Secondary Schooling).</p>
+            <p><em>Returning to base to contribute to the UAE's Knowledge Economy.</em></p>
+        </div>
+
+        <!-- CONTACT SECTION -->
+        <div class="panel" style="text-align: center;">
+            <h2>Hailing Frequencies</h2>
+            <p>Transmitting on all open channels.</p>
+            <p style="margin-top: 20px;">
+                <a href="#">[ LinkedIn Link ]</a> &nbsp;|&nbsp; 
+                <a href="#">[ GitHub Data ]</a> &nbsp;|&nbsp; 
+                <a href="mailto:your-email@example.com">[ Send Signal ]</a>
+            </p>
+        </div>
+
+        <footer>
+            Transmission End. &copy; 2025 Zafir Ahamed Abdul Rauf. <br>
+            <em>"The stars are not too high for those who build their own rockets."</em>
+        </footer>
+
+    </div>
+
 </body>
 </html>
