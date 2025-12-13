@@ -1,0 +1,964 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Zafir Ahamed Abdul Rauf | Robotics & Embedded Systems</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Portfolio of Zafir Ahamed Abdul Rauf – electronics & instrumentation engineer, robotics and embedded systems specialist, and civil service professional focused on AI-powered autonomous systems." />
+  <style>
+    :root {
+      --bg: #050816;
+      --bg-alt: #0b1020;
+      --accent: #ffb347;
+      --accent-soft: rgba(255, 179, 71, 0.12);
+      --text: #f5f5f5;
+      --muted: #a0aec0;
+      --card: #111827;
+      --border: #2d3748;
+      --pill: #1f2937;
+      --shadow-soft: 0 18px 45px rgba(0, 0, 0, 0.55);
+      --radius-lg: 18px;
+      --radius-md: 12px;
+      --radius-pill: 999px;
+      --font-sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: var(--font-sans);
+      background: radial-gradient(circle at top left, #1f2937 0, #020617 45%, #000 100%);
+      color: var(--text);
+      line-height: 1.6;
+      scroll-behavior: smooth;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    /* Layout */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(18px);
+      background: linear-gradient(to right, rgba(5, 8, 22, 0.95), rgba(5, 8, 22, 0.85));
+      border-bottom: 1px solid rgba(148, 163, 184, 0.18);
+    }
+
+    .nav-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0.6rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .brand {
+      font-weight: 700;
+      font-size: 1rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .brand-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: var(--accent);
+    }
+
+    nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      gap: 1.2rem;
+      font-size: 0.9rem;
+    }
+
+    nav a {
+      color: var(--muted);
+      font-weight: 500;
+      position: relative;
+      padding-bottom: 0.15rem;
+    }
+
+    nav a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 2px;
+      background: var(--accent);
+      transition: width 0.25s ease;
+    }
+
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    main {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 1.5rem 1.5rem 3rem;
+    }
+
+    section {
+      padding: 3rem 0;
+      border-bottom: 1px solid rgba(31, 41, 55, 0.9);
+    }
+
+    section:last-of-type {
+      border-bottom: none;
+    }
+
+    .section-title {
+      font-size: 1.4rem;
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .section-title span {
+      width: 24px;
+      height: 2px;
+      background: var(--accent);
+      border-radius: 999px;
+    }
+
+    .section-subtitle {
+      color: var(--muted);
+      font-size: 0.95rem;
+      max-width: 640px;
+    }
+
+    /* Hero */
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2.4fr);
+      gap: 2.25rem;
+      align-items: center;
+      padding-top: 2.5rem;
+    }
+
+    .hero-text h1 {
+      font-size: clamp(2.1rem, 3vw, 2.6rem);
+      margin: 0 0 0.75rem;
+    }
+
+    .hero-tagline {
+      color: var(--muted);
+      font-size: 0.98rem;
+      max-width: 600px;
+    }
+
+    .hero-badges {
+      margin: 1.4rem 0 1.1rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+    }
+
+    .badge {
+      border-radius: var(--radius-pill);
+      padding: 0.25rem 0.75rem;
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      font-size: 0.75rem;
+      color: var(--muted);
+      background: linear-gradient(135deg, rgba(15, 23, 42, 0.95), rgba(3, 7, 18, 0.9));
+    }
+
+    .hero-cta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-top: 0.75rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4rem;
+      border-radius: var(--radius-pill);
+      padding: 0.55rem 1.1rem;
+      font-size: 0.85rem;
+      font-weight: 500;
+      border: 1px solid var(--accent);
+      color: #111827;
+      background: linear-gradient(135deg, #ffb347, #ff9447);
+      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.6);
+    }
+
+    .btn-secondary {
+      border-color: var(--border);
+      color: var(--muted);
+      background: rgba(15, 23, 42, 0.9);
+      box-shadow: none;
+    }
+
+    .hero-meta {
+      margin-top: 1rem;
+      font-size: 0.8rem;
+      color: var(--muted);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+    }
+
+    .hero-card {
+      position: relative;
+      background: radial-gradient(circle at top left, #374151 0, #020617 40%, #020617 100%);
+      border-radius: 24px;
+      padding: 0.6rem;
+      box-shadow: var(--shadow-soft);
+      border: 1px solid rgba(148, 163, 184, 0.25);
+      overflow: hidden;
+      max-width: 360px;
+      margin-left: auto;
+    }
+
+    .hero-card-inner {
+      border-radius: 20px;
+      overflow: hidden;
+      background: #020617;
+    }
+
+    .hero-card img {
+      display: block;
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+    }
+
+    .hero-card-footer {
+      padding: 0.6rem 0.8rem 0.7rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: linear-gradient(to right, rgba(15, 23, 42, 0.96), rgba(15, 23, 42, 0.96));
+    }
+
+    .hero-name {
+      font-size: 0.95rem;
+      font-weight: 600;
+    }
+
+    .hero-role {
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    .hero-location {
+      font-size: 0.75rem;
+      color: var(--accent);
+    }
+
+    /* Generic layout components */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1.75rem;
+      margin-top: 1.8rem;
+    }
+
+    .cards {
+      margin-top: 1.8rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 1.3rem;
+    }
+
+    .card {
+      background: radial-gradient(circle at top left, #111827 0, #020617 55%);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border);
+      padding: 1rem 1.1rem;
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.55);
+    }
+
+    .card h3 {
+      margin: 0 0 0.4rem;
+      font-size: 1rem;
+    }
+
+    .card h4 {
+      margin: 0;
+      font-size: 0.87rem;
+      color: var(--muted);
+    }
+
+    .card-meta {
+      margin: 0.35rem 0 0.55rem;
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    .card ul {
+      margin: 0.4rem 0 0;
+      padding-left: 1.1rem;
+      font-size: 0.86rem;
+    }
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+      margin-top: 0.7rem;
+    }
+
+    .pill {
+      padding: 0.2rem 0.7rem;
+      border-radius: var(--radius-pill);
+      background: var(--pill);
+      color: var(--muted);
+      font-size: 0.75rem;
+      border: 1px solid rgba(75, 85, 99, 0.7);
+    }
+
+    .timeline {
+      border-left: 1px solid var(--border);
+      padding-left: 1.2rem;
+      margin-top: 1.5rem;
+    }
+
+    .timeline-item {
+      margin-bottom: 1.3rem;
+      position: relative;
+    }
+
+    .timeline-item::before {
+      content: "";
+      position: absolute;
+      left: -1.35rem;
+      top: 0.25rem;
+      width: 9px;
+      height: 9px;
+      border-radius: 999px;
+      background: var(--accent);
+      box-shadow: 0 0 0 4px rgba(255, 179, 71, 0.2);
+    }
+
+    .timeline-item h3 {
+      font-size: 0.98rem;
+      margin: 0;
+    }
+
+    .timeline-item h4 {
+      font-size: 0.86rem;
+      margin: 0.1rem 0 0.15rem;
+      color: var(--muted);
+    }
+
+    .timeline-item span {
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    .timeline-item p {
+      margin: 0.35rem 0 0;
+      font-size: 0.86rem;
+    }
+
+    .gallery-grid {
+      margin-top: 1.4rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 0.9rem;
+    }
+
+    .gallery-item {
+      border-radius: var(--radius-md);
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      overflow: hidden;
+      background: rgba(15, 23, 42, 0.9);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.55);
+    }
+
+    .gallery-item img {
+      display: block;
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+    }
+
+    .gallery-caption {
+      padding: 0.45rem 0.6rem 0.6rem;
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    .gallery-caption strong {
+      display: block;
+      color: var(--text);
+      margin-bottom: 0.15rem;
+      font-size: 0.8rem;
+    }
+
+
+    .gallery-placeholder {
+      border-radius: var(--radius-md);
+      border: 1px dashed rgba(148, 163, 184, 0.5);
+      padding: 0.7rem;
+      font-size: 0.78rem;
+      color: var(--muted);
+      text-align: center;
+      background: rgba(15, 23, 42, 0.8);
+    }
+
+    /* Contact */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 2.1fr) minmax(0, 1.4fr);
+      gap: 1.5rem;
+      margin-top: 1.7rem;
+      align-items: start;
+    }
+
+    .contact-card {
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border);
+      background: radial-gradient(circle at top left, #111827 0, #020617 55%);
+      padding: 1rem 1.2rem;
+    }
+
+    .contact-list {
+      list-style: none;
+      padding: 0;
+      margin: 0.2rem 0 0;
+      font-size: 0.9rem;
+    }
+
+    .contact-list li {
+      margin-bottom: 0.4rem;
+    }
+
+    footer {
+      text-align: center;
+      font-size: 0.78rem;
+      color: var(--muted);
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(31, 41, 55, 0.9);
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      nav ul {
+        display: none;
+      }
+      .hero {
+        grid-template-columns: 1fr;
+      }
+      .hero-card {
+        margin-left: 0;
+      }
+      .grid-2,
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 640px) {
+      main {
+        padding-inline: 1rem;
+      }
+      section {
+        padding-block: 2.3rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="nav-inner">
+      <div class="brand">
+        <span class="brand-dot"></span>
+        <span>Zafir Ahamaed Abdul Rauf</span>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#experience">Experience</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#teaching">Teaching</a></li>
+          <li><a href="#vision">Vision</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <section id="top" aria-label="Introduction">
+      <div class="hero">
+        <div class="hero-text">
+          <h1>Electronics Engineer, Robotics Builder, Public Servant</h1>
+          <p class="hero-tagline">
+            Electronics and instrumentation engineer with deep embedded systems and industrial automation experience, returning to robotics and AI to build reliable autonomous platforms for the UAE and beyond.
+          </p>
+
+          <div class="hero-badges">
+            <span class="badge">Embedded Systems &amp; Control</span>
+            <span class="badge">Robotics Hardware Design</span>
+            <span class="badge">Civil Service &amp; E‑Governance</span>
+            <span class="badge">MBZUAI MSc Robotics Applicant</span>
+          </div>
+
+          <div class="hero-cta">
+            <a class="btn" href="#projects">View selected projects</a>
+            <a class="btn btn-secondary" href="#contact">Get in touch</a>
+          </div>
+
+          <div class="hero-meta">
+            <span>Based in Thiruvananthapuram, India • Strong roots in Abu Dhabi, UAE</span>
+            <span>Interested in robotics, AI, autonomy, and technology for public systems</span>
+          </div>
+        </div>
+
+        <aside class="hero-card">
+          <div class="hero-card-inner">
+            <img src="profile-photo.jpg" alt="Portrait of Zafir Ahamed Abdul Rauf" />
+            <div class="hero-card-footer">
+              <div>
+                <div class="hero-name">Zafir Ahamed Abdul Rauf</div>
+                <div class="hero-role">Electronics &amp; Instrumentation Engineer</div>
+              </div>
+              <div class="hero-location">UAE‑focused Robotics</div>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section id="about">
+      <h2 class="section-title"><span></span>About</h2>
+      <p class="section-subtitle">
+        An engineer who grew up in Abu Dhabi, built early‑stage robotics hardware, and then spent a decade in the Kerala civil service applying an engineering mindset to governance and large‑scale logistics.
+      </p>
+
+      <div class="grid-2">
+        <div>
+          <p>
+            Your background combines low‑level firmware, industrial automation, and modern software with hands‑on prototyping using microcontrollers, sensors, and 3D‑printed mechanisms.
+          </p>
+          <p>
+            This foundation now supports a focused pivot back into robotics and AI, with interests in autonomous systems for infrastructure, logistics, healthcare, and public‑impact applications.
+          </p>
+        </div>
+        <div class="card">
+          <h3>Snapshot</h3>
+          <ul>
+            <li>B.Tech in Electronics &amp; Instrumentation Engineering (CUSAT)</li>
+            <li>R&amp;D on 6‑DOF robotic arms and rover platforms (Biotz Intelligent Systems)</li>
+            <li>Senior Grade Assistant, State Protocol – Government of Kerala</li>
+            <li>Advisory Board member, Hayyatek FZC, Sharjah (AI &amp; blockchain in pharma)</li>
+            <li>Applicant to MSc in Robotics, MBZUAI</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills -->
+    <section id="skills">
+      <h2 class="section-title"><span></span>Skills</h2>
+      <p class="section-subtitle">
+        Full‑stack capability from embedded control and industrial automation to Python‑based tooling, simulation, and early AI and computer vision work.
+      </p>
+
+      <div class="cards">
+        <div class="card">
+          <h3>Embedded &amp; Robotics</h3>
+          <p class="card-meta">Building reliable hardware and control stacks.</p>
+          <div class="pill-row">
+            <span class="pill">C / C++ / Embedded C</span>
+            <span class="pill">AVR / PIC / 8085</span>
+            <span class="pill">ESP32 / Arduino / Raspberry Pi</span>
+            <span class="pill">Sensors &amp; Actuators</span>
+            <span class="pill">Motor Control</span>
+            <span class="pill">PCB Prototyping</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>Automation &amp; Control</h3>
+          <p class="card-meta">Industrial‑grade reliability and safety mindset.</p>
+          <div class="pill-row">
+            <span class="pill">PLC / PAC / DCS</span>
+            <span class="pill">SCADA &amp; HMI</span>
+            <span class="pill">VFD Drives</span>
+            <span class="pill">Process Instrumentation</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>Software &amp; AI Tools</h3>
+          <p class="card-meta">Bridging hardware with intelligent behavior.</p>
+          <div class="pill-row">
+            <span class="pill">Python</span>
+            <span class="pill">MATLAB</span>
+            <span class="pill">OpenCV</span>
+            <span class="pill">NumPy / SciPy</span>
+            <span class="pill">ROS2 concepts</span>
+            <span class="pill">Flask / Django basics</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>Leadership &amp; Communication</h3>
+          <p class="card-meta">Engineering thinking applied to teams and policy.</p>
+          <div class="pill-row">
+            <span class="pill">Civil service operations</span>
+            <span class="pill">VIP logistics &amp; events</span>
+            <span class="pill">Technical mentoring</span>
+            <span class="pill">Policy &amp; governance</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Experience -->
+    <section id="experience">
+      <h2 class="section-title"><span></span>Experience</h2>
+      <p class="section-subtitle">
+        Bridging robotics entrepreneurship, technical training, and a decade of public service with technology‑driven reforms and large‑scale coordination.
+      </p>
+
+      <div class="timeline">
+        <div class="timeline-item">
+          <h3>Senior Grade Assistant, State Protocol</h3>
+          <h4>Government of Kerala · 2021–Present</h4>
+          <span>VIP logistics, G20 events, Vizhinjam International Port inauguration, and e‑governance platform “K‑Protocol”.</span>
+          <p>Lead multi‑agency coordination and supervise a digital system to manage protocol workflows statewide.</p>
+        </div>
+
+      <div class="gallery-grid" style="margin-top:1.8rem;">
+        <div class="gallery-item">
+          <img src="IMG-20251207-WA0014.jpg" alt="Protocol officer standing with two delegates in front of a colorful installation" />
+          <div class="gallery-caption">
+            <strong>Delegation visit</strong>
+            Coordinating an outdoor cultural visit for international delegates as part of an official program.
+          </div>
+        </div>
+
+        <div class="gallery-item">
+          <img src="IMG-20251207-WA0013.jpg" alt="Delegates walking through a conference venue with event branding in the background" />
+          <div class="gallery-caption">
+            <strong>Conference movements</strong>
+            Managing arrivals and guided movements for participants at a high‑level regional conference.
+          </div>
+        </div>
+
+        <div class="gallery-item">
+          <img src="pr1.jpg" alt="Protocol officer monitoring the arrival of a senior dignitary on an airstrip" />
+          <div class="gallery-caption">
+            <strong>Airport reception duty</strong>
+            On‑ground protocol supervision during the arrival of a senior dignitary at an airfield.
+          </div>
+        </div>
+
+        <div class="gallery-item">
+          <img src="IMG-20251207-WA0015.jpg" alt="Protocol officer wearing an official lanyard and ID card" />
+          <div class="gallery-caption">
+            <strong>On-site coordination</strong>
+            Field coordination role as Senior Grade Assistant in the State Protocol Department.
+          </div>
+        </div>
+
+        <div class="gallery-item">
+          <img src="IMG-20251207-WA0012.jpg" alt="Group photo with international performers and organizers at an outdoor event" />
+          <div class="gallery-caption">
+            <strong>Cultural event hosting</strong>
+            Supporting a multicultural performance event linked to an official visit program.
+          </div>
+        </div>
+      </div>
+
+
+        <div class="timeline-item">
+          <h3>Advisory Board – Technology &amp; Innovation</h3>
+          <h4>Hayyatek FZC, Sharjah · 2024–Present</h4>
+          <span>AI and blockchain solutions for the pharmaceutical sector in the UAE.</span>
+          <p>Provide strategic guidance that links regulatory experience, healthcare needs, and practical AI deployment.</p>
+        </div>
+
+        <div class="timeline-item">
+          <h3>Director of Research (Founding Team)</h3>
+          <h4>Biotz Intelligent Systems · 2013–2014</h4>
+          <span>Educational and light‑industrial robotics platforms.</span>
+          <p>Led design of affordable 6‑DOF arms and rovers, integrating embedded control, sensing, and wireless communication.</p>
+        </div>
+
+<div class="gallery-grid">
+        <div class="gallery-item">
+          <img src="DSC05261.jpg" alt="Biotz Intelligent Technologies signboard outside the workspace" />
+          <div class="gallery-caption">
+            <strong>Biotz front sign</strong>
+            Facade of Biotz Intelligent Technologies, where the robotics R&amp;D lab and workshops were based.
+          </div>
+        </div>
+
+        <div class="gallery-item">
+          <img src="DSC06596.jpg" alt="Team members wiring and assembling a mobile robot on the floor" />
+          <div class="gallery-caption">
+            <strong>Hands-on wiring</strong>
+            Early-stage wiring and integration of the autonomous rover platform motor drivers, sensors, and power electronics.
+          </div>
+        </div>
+
+        <div class="gallery-item">
+          <img src="DSC06751.jpg" alt="Top view of a metal-bodied Biotz rover prototype with a red logo panel" />
+          <div class="gallery-caption">
+            <strong>Rover prototype chassis</strong>
+            Metal-frame rover prototype with Biotz branding used for navigation and sensing experiments.
+          </div>
+        </div>
+
+        <div class="gallery-item">
+          <img src="DSC06745.jpg" alt="Close-up of hands working with green wires on a robot" />
+          <div class="gallery-caption">
+            <strong>Signal routing</strong>
+            Detail of sensor and control wiring for the embedded controller stack.
+          </div>
+        </div>
+
+        <div class="gallery-item">
+          <img src="DSC06739.jpg" alt="Team assembling a lightweight aluminium structure with large white wheel" />
+          <div class="gallery-caption">
+            <strong>Mechanical frame build</strong>
+            Assembly of a lightweight aluminium frame and wheels for a larger mobile platform.
+          </div>
+        </div>
+
+        <div class="gallery-item">
+          <img src="DSC06663.jpg" alt="Engineer concentrating on a laptop in the Biotz office" />
+          <div class="gallery-caption">
+            <strong>Control &amp; planning</strong>
+            Software and control work sessions backing the hardware experiments.
+          </div>
+        </div>
+
+        <div class="gallery-item">
+          <img src="DSC06729.jpg" alt="Top view of a Biotz robot base with wiring, sensors, and battery pack" />
+          <div class="gallery-caption">
+            <strong>Sensor-rich base</strong>
+            Close-up of the sensor suite, battery pack, and microcontroller stack on the rover base.
+          </div>
+        </div>
+
+        <div class="gallery-item">
+          <img src="DSC05289.jpg" alt="Speaker presenting to a small group at an evening workshop" />
+          <div class="gallery-caption">
+            <strong>Startup workshop</strong>
+            Evening session at the Biotz rooftop space, mentoring peers on robotics and technology.
+          </div>
+        </div>
+
+        <div class="gallery-item">
+          <img src="DSC06742.jpg" alt="Team collaborating around a lightweight frame with wheels and tools on the table" />
+          <div class="gallery-caption">
+            <strong>Team collaboration</strong>
+            Collaborative build session aligning mechanical design with embedded control requirements.
+          </div>
+        </div>
+      </div>
+
+
+        <div class="timeline-item">
+          <h3>Embedded Systems Trainer &amp; Consultant</h3>
+          <h4>SMEC Automation &amp; Freelance · 2014–2015</h4>
+          <span>Hands‑on training and project mentoring.</span>
+          <p>Guided students and engineers from concept to working prototypes in microcontroller‑based systems and automation.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects">
+      <h2 class="section-title"><span></span>Selected Projects</h2>
+      <p class="section-subtitle">
+        A sample of work spanning robotics hardware, process automation, and technology‑driven public systems.
+      </p>
+
+      <div class="cards">
+        <div class="card">
+          <h3>Robotic Arms &amp; Rover Platforms</h3>
+          <p class="card-meta">Biotz Intelligent Systems</p>
+          <ul>
+            <li>Designed lightweight 6‑DOF arms and modular rovers for education and research.</li>
+            <li>Integrated microcontrollers, motor drivers, sensor suites, and wireless links in compact control stacks.</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h3>PLC‑Based Auto Sludge Removal</h3>
+          <p class="card-meta">Titanium Dioxide Plant</p>
+          <ul>
+            <li>Implemented PLC logic for automated sludge removal in an industrial process line.</li>
+            <li>Improved repeatability and safety while reducing manual intervention in harsh environments.</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h3>K‑Protocol E‑Governance Platform</h3>
+          <p class="card-meta">State Protocol, Government of Kerala</p>
+          <ul>
+            <li>Supervise development of a digital platform that centralizes protocol workflows across the state.</li>
+            <li>Define requirements linking legacy processes with a scalable, auditable online system.</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h3>Open‑Source &amp; Simulation Experiments</h3>
+          <p class="card-meta">Ongoing</p>
+          <ul>
+            <li>Explore ROS2 concepts, scientific Python, and OpenCV for perception and multi‑sensor fusion.</li>
+            <li>Use game engines and 3D tools to prototype robot behavior and human‑robot interaction scenes.</li>
+          </ul>
+        </div>
+      </div>
+
+      
+    </section>
+
+    <!-- Teaching & Mentoring -->
+    <section id="teaching">
+      <h2 class="section-title"><span></span>Teaching &amp; Mentoring</h2>
+      <p class="section-subtitle">
+        Coaching engineers, school students, and civil‑service aspirants with a focus on clarity, hands‑on learning, and systems thinking.
+      </p>
+
+      <div class="cards">
+        <div class="card">
+          <h3>Robotics 1‑2‑3 Studio</h3>
+          <h4>NuVu Studio · American School of Bombay</h4>
+          <p>Guided school teams to identify real problems and build robotic solutions using prototyping, soldering, microcontrollers, and iterative testing.</p>
+        </div>
+        <div class="card">
+          <h3>Embedded Systems Training</h3>
+          <h4>SMEC Automation &amp; Private Workshops</h4>
+          <p>Designed curricula that move from C programming and hardware interfacing to complete projects with sensors, actuators, and debugging workflows.</p>
+        </div>
+        <div class="card">
+          <h3>Civil Services Coaching</h3>
+          <h4>Volunteer Mentor</h4>
+          <p>Mentored aspirants on international relations, science and technology, and current affairs, emphasizing analytical reasoning and structured thinking.</p>
+        </div>
+      </div>
+
+      <div class="gallery-grid" style="margin-top:1.8rem;">
+        <div class="gallery-item">
+          <img src="DSC07584.jpg" alt="Coach guiding students as they prototype electronics at a NuVu Studio session" />
+          <div class="gallery-caption">
+            <strong>Hands-on mentoring</strong>
+            Coaching middle-school students at the Robotics 1‑2‑3 studio, American School of Bombay, as they build circuits and sensor prototypes.
+          </div>
+        </div>
+
+        <div class="gallery-item">
+          <img src="DSC07559.jpg" alt="Small group discussion in a maker studio, with electronics kits and a presentation screen" />
+          <div class="gallery-caption">
+            <strong>Studio-based learning</strong>
+            Leading a NuVu-style design studio where students brainstorm, sketch ideas, and plan their robotic solutions in a maker-space environment.
+          </div>
+        </div>
+
+        <div class="gallery-item">
+          <img src="DSC07925.jpg" alt="Students presenting their robot design elements on a large screen" />
+          <div class="gallery-caption">
+            <strong>Student presentations</strong>
+            Final presentations where teams explain the components and behavior of the robots they designed during the workshop.
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- Vision -->
+    <section id="vision">
+      <h2 class="section-title"><span></span>Advisory Role &amp; Vision</h2>
+      <p class="section-subtitle">
+        A long‑term plan to build UAE‑based robotics ventures that unite public‑sector insight, rigorous engineering, and advanced AI.
+      </p>
+
+      <div class="grid-2">
+        <div>
+          <p>
+            Your advisory work with Hayyatek connects regulatory awareness and frontier technology, exploring how AI and blockchain can improve pharmaceutical traceability and patient safety.
+          </p>
+          <p>
+            Looking ahead, your goal is to found robotics startups in the UAE that deliver AI‑enabled platforms for healthcare, logistics, and critical infrastructure, while mentoring the next generation of engineers.
+          </p>
+        </div>
+        <div class="card">
+          <h3>Interests &amp; Influences</h3>
+          <ul>
+            <li>Robotics, autonomy, and safety‑critical systems</li>
+            <li>International relations, defence technology, and geopolitics</li>
+            <li>Science‑fiction as a lens on AI and ethics</li>
+            <li>Open‑source tools and accessible technology ecosystems</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact">
+      <h2 class="section-title"><span></span>Contact</h2>
+      <p class="section-subtitle">
+        Open to collaborations, research opportunities, and conversations around robotics, embedded systems, and technology‑driven public service.
+      </p>
+
+      <div class="contact-grid">
+        <div class="contact-card">
+          <h3>Say hello</h3>
+          <ul class="contact-list">
+            <li>Email: <a href="mailto:zafir.engineer@gmail.com">zafir.engineer@gmail.com</a></li>
+            <li>GitHub / Portfolio: <a href="https://wizaard.github.io" target="_blank" rel="noreferrer">wizaard.github.io</a></li>
+          </ul>
+          <p style="margin-top:0.7rem;font-size:0.86rem;color:#cbd5f5;">
+            For a detailed CV or references, please reach out by email.
+          </p>
+        </div>
+
+        <div class="contact-card">
+          <h3>Quick links</h3>
+          <ul class="contact-list">
+            <li><a href="#top">Back to top</a></li>
+            <li><a href="#projects">Robotics &amp; automation projects</a></li>
+            <li><a href="#teaching">Teaching &amp; mentoring</a></li>
+            <li><a href="#vision">Long‑term vision</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <footer>
+        © <span id="year"></span> Zafir Ahamed Abdul Rauf · Built for MBZUAI‑era robotics journey
+      </footer>
+    </section>
+  </main>
+
+  <script>
+    // Set current year in footer
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
